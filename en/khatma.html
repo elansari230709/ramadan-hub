@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan hub</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body class="home-bg">
+    <div id="menu_parametres">
+        <div id="parametres">
+            <span>Settings</span>
+            <button id="button_fermer" onclick="parametresFermer()">X</button>
+            <hr>
+            Language <br>
+            <button onclick="location.href='../fr/khatma.html'">FR Français</button>
+            <button onclick="location.href='../ar/khatma.html'">AR العربية</button> <br>
+            Location <br>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <header>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <div id="bouttons_pages">
+            <button onclick="location.href='accueil.html'">Home</button>
+            <button onclick="location.href='prieres.html'">Prayers</button>
+            <button onclick="location.href='khatma.html'" class="current">Khatma</button>
+            <button onclick="location.href='planning.html'">Planning</button>
+            <button onclick="location.href='dhikr.html'">Dhikr</button>
+            <button onclick="location.href='doua.html'">Du'a</button>
+        </div>
+        <button id="parametresOuvrir" onclick="parametresOuvrir()">⚙️</button>
+    </header>
+
+    <hr>
+
+    <main>
+        <section class="page">
+            <div class="header">
+                <span class="arabic">﷽</span>
+                <h1>Khatma Tracker</h1>
+                <p class="subtitle">Plan your Quran reading</p>
+            </div>
+
+            <section class="card classic">
+                <h2>🎯 Khatma Goal</h2>
+
+                <div class="khatma-buttons">
+                    <button class="current">1 Khatma</button>
+                    <button>2 Khatmas</button>
+                    <button>3 Khatmas</button>
+                    <button>4 Khatmas</button>
+                    <button>5 Khatmas</button>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <strong>21</strong>
+                        <span>Pages/day</span>
+                    </div>
+                    <div class="stat green">
+                        <strong>5</strong>
+                        <span>Pages/prayer</span>
+                    </div>
+                    <div class="stat">
+                        <strong>0</strong>
+                        <span>Pages read</span>
+                    </div>
+                    <div class="stat">
+                        <strong>604</strong>
+                        <span>Pages left</span>
+                    </div>
+                </div>
+            </section>
+
+            <div class="grid">
+                <section class="card classic">
+                    <h2>📈 Today's progress</h2>
+
+                    <div class="circle-khatma">
+                        <span>0</span>
+                        <small>/21</small>
+                    </div>
+
+                    <button class="primary">+1 Page</button>
+
+                    <div class="actions">
+                        <button class="secondary">Reset today</button>
+                        <button class="secondary">Reset all</button>
+                    </div>
+                </section>
+
+                <section class="card classic">
+                    <h2>📖 Total progress</h2>
+
+                    <div class="progress">
+                        <span>0 / 604 pages</span>
+                        <span class="percent">0.0%</span>
+                    </div>
+                    <div class="bar">
+                        <div class="fill"></div>
+                    </div>
+
+                    <h3>Distribution by prayer</h3>
+
+                    <ul class="prayers">
+                        <li><span>Fajr</span><strong>5 pages</strong></li>
+                        <li><span>Dhuhr</span><strong>5 pages</strong></li>
+                        <li><span>Asr</span><strong>5 pages</strong></li>
+                        <li><span>Maghrib</span><strong>5 pages</strong></li>
+                        <li><span>Isha</span><strong>5 pages</strong></li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <hr>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../script.js"></script>
+    <footer>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <p>May Allah accept our fasting and worship.</p>
+        <p>Made with ❤️ for the Ummah</p>
+        <p>© 2026 Ramadan hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

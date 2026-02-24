@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan hub</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="home-bg">
+    <div id="menu_parametres">
+      <div id="parametres">
+        <span>Settings</span>
+        <button id="button_fermer" onclick="parametresFermer()">X</button>
+        <hr>
+        Language <br>
+        <button onclick="location.href='../fr/planning.html'">FR Français</button>
+        <button onclick="location.href='../ar/planning.html'">AR العربية</button> <br>
+        Location <br>
+        <div id="map"></div>
+      </div>
+  </div>
+
+    <header>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <div id="bouttons_pages">
+            <button onclick="location.href='accueil.html'">Home</button>
+            <button onclick="location.href='prieres.html'">Prayers</button>
+            <button onclick="location.href='khatma.html'">Khatma</button>
+            <button onclick="location.href='planning.html'" class="current">Planning</button>
+            <button onclick="location.href='dhikr.html'">Dhikr</button>
+            <button onclick="location.href='doua.html'">Du'a</button>
+        </div>
+        <button id="parametresOuvrir" onclick="parametresOuvrir()">⚙️</button>
+    </header>
+
+    <hr>
+    <main>
+        <div class="container-planning">
+            <div class="header-planning">
+                <div class="icon">📅</div>
+                <p class="arabic">اليوم</p>
+                <h1>Today's Plan</h1>
+                <p class="subtitle">Track your daily worship</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span>Today's progress</span>
+                    <span class="count-planning">0/8</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-planning"></div>
+                </div>
+
+                <p class="progress-text">0% completed</p>
+            </div>
+
+            <div class="card">
+                <div class="section-title">
+                    🌙 <span>Prayers</span>
+                </div>
+
+                <div class="prayers-planning">
+                    <div class="prayer-item button">Fajr</div>
+                    <div class="prayer-item button">Dhuhr</div>
+                    <div class="prayer-item button">Asr</div>
+                    <div class="prayer-item button">Maghrib</div>
+                    <div class="prayer-item button">Isha</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="section-title">
+                    💛 <span>Worship</span>
+                </div>
+
+                <div class="worship-item button">Quran reading</div>
+                <div class="worship-item button">Dhikr</div>
+                <div class="worship-item button">Du'a</div>
+            </div>
+        </div>
+    </main>
+
+    <hr>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../script.js"></script>
+    <footer>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <p>May Allah accept our fasting and worship.</p>
+        <p>Made with ❤️ for the Ummah</p>
+        <p>© 2026 Ramadan hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

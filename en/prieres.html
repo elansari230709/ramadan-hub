@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan hub</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+<body class="home-bg">
+    <div id="menu_parametres">
+        <div id="parametres">
+            <span>Settings</span>
+            <button id="button_fermer" onclick="parametresFermer()">X</button>
+            <hr>
+            Language <br>
+            <button onclick="location.href='../fr/prieres.html'">FR Français</button>
+            <button onclick="location.href='../ar/prieres.html'">AR العربية</button> <br>
+            Location <br>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <header>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <div id="bouttons_pages">
+            <button onclick="location.href='accueil.html'">Home</button>
+            <button onclick="location.href='prieres.html'" class="current">Prayers</button>
+            <button onclick="location.href='khatma.html'">Khatma</button>
+            <button onclick="location.href='planning.html'">Planning</button>
+            <button onclick="location.href='dhikr.html'">Dhikr</button>
+            <button onclick="location.href='doua.html'">Du'a</button>
+        </div>
+        <button id="parametresOuvrir" onclick="parametresOuvrir()">⚙️</button>
+    </header>
+
+    <hr>
+
+    <main>
+        <section class="page">
+            <section class="header">
+                <h1>Prayer Times</h1>
+                <p id="place">Please select a location in settings</p>
+                <p class="subtitle">Approximate times for today</p>
+            </section>
+            <section class="cards">
+                <div class="card blue">
+                    <div class="card-icon">🌄</div>
+                    <div class="card-title">Fajr</div>
+                    <div class="card-time" id="Fajr">- : -</div>
+                </div>
+
+                <div class="card olive">
+                    <div class="card-icon">🌤️</div>
+                    <div class="card-title">Dhuhr</div>
+                    <div class="card-time" id="Dhuhr">- : -</div>
+                </div>
+
+                <div class="card amber">
+                    <div class="card-icon">☀️</div>
+                    <div class="card-title">Asr</div>
+                    <div class="card-time" id="Asr">- : -</div>
+                </div>
+
+                <div class="card red">
+                    <div class="card-icon">🌇</div>
+                    <div class="card-title">Maghrib</div>
+                    <div class="card-time" id="Maghrib">- : -</div>
+                </div>
+
+                <div class="card purple">
+                    <div class="card-icon">🌙</div>
+                    <div class="card-title">Isha</div>
+                    <div class="card-time" id="Isha">- : -</div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <hr>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../script.js"></script>
+    <footer>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <p>May Allah accept our fasting and worship.</p>
+        <p>Made with ❤️ for the Ummah</p>
+        <p>© 2026 Ramadan hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

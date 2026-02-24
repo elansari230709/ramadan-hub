@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan hub</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="home-bg">
+    <div id = "menu_parametres">
+      <div id = "parametres">
+        <span>Paramètres</span>
+        <button id="button_fermer" onclick="parametresFermer()">X</button> 
+        <hr>
+        Langue <br>
+        <button onclick="location.href='../en/doua.html'">EN English</button>
+        <button onclick="location.href='../ar/doua.html'">AR العربية</button> <br>
+        Location <br>
+        <div id="map"></div>
+      </div>
+  </div>
+        
+    <header>    
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <div id = "bouttons_pages">
+            <button onclick="location.href= 'accueil.html'">Accueil</button>
+            <button onclick="location.href= 'prieres.html'">Prières</button>
+            <button onclick="location.href='khatma.html'">Khatma</button>
+            <button onclick="location.href='planning.html'">Planning</button>
+            <button onclick="location.href='dhikr.html'">Dhikr</button>
+            <button onclick="location.href='doua.html'" class ="current">Dou'a</button>
+        </div>
+        <button id="parametresOuvrir" onclick="parametresOuvrir()">⚙️</button>
+
+    </header>
+
+    <hr>
+    <main>
+        <section class="page">
+
+            <div class="arabic-title">📖 الدعاء</div>
+
+            <h1 class="main-title">Dou'as Authentiques</h1>
+
+            <p class="subtitle">
+                Invocations du Coran et de la Sunnah
+            </p>
+
+            <button type="button" class="random-btn">
+                🔁 Dou'a aléatoire
+            </button>
+
+            <div class="filters">
+                <button class="filter-btn active" data-type="all">Tous</button>
+                <button class="filter-btn" data-type="pardon">Pardon</button>
+                <button class="filter-btn" data-type="guidance">Guidance</button>
+                <button class="filter-btn" data-type="famille">Famille</button>
+                <button class="filter-btn" data-type="reussite">Réussite</button>
+                <button class="filter-btn" data-type="laylat">Laylat al-Qadr</button>
+                <button class="filter-btn" data-type="general">Général</button>
+            </div>
+
+            <div id="dua-list" class="dua-list"></div>
+
+        </section>
+    </main>
+    
+    <hr>    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../script.js"></script>
+    <footer>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <p>Qu'Allah accepte notre jeûne et nos adorations</p>
+        <p>Fait avec ❤️ pour la Oumma</p>
+        <p>© 2026 Ramadan hub. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
+

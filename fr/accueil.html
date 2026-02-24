@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan hub</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+</head>
+<body class="home-bg">
+    <div id = "menu_parametres">
+        <div id = "parametres">
+        <span>Paramètres</span>
+        <button id="button_fermer" onclick="parametresFermer()">X</button> 
+        <hr>
+        Langue <br>
+        <button onclick="location.href='../en/accueil.html'">EN English</button>
+        <button onclick="location.href='../ar/accueil.html'">AR العربية</button> <br>
+        Location <br>
+        <div id="map"></div>
+        </div>
+    </div>
+        
+    <header>    
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <div id = "bouttons_pages">
+            <button onclick="location.href= 'accueil.html'" class="current">Accueil</button>
+            <button onclick="location.href= 'prieres.html'">Prières</button>
+            <button onclick="location.href='khatma.html'">Khatma</button>
+            <button onclick="location.href='planning.html'">Planning</button>
+            <button onclick="location.href='dhikr.html'">Dhikr</button>
+            <button onclick="location.href='doua.html'">Dou'a</button>
+        </div>
+        <button id="parametresOuvrir" onclick="parametresOuvrir()">⚙️</button>
+
+    </header>
+
+    <hr>
+    
+    <main>
+        <section class="page">
+            <div class="hero">
+            <h1>
+                <span class="white">Ramadan</span><br>
+                <span class="gold">Mubarak</span><br>
+                <span class="arabic">رمضان كريم</span>
+            </h1>
+            </div>
+
+            <section class = "card classic" id="countdown-card">
+            <p id="place">Veuillez choisir un emplacement dans les paramètres</p>
+            <div class="card-header">
+                <span class="icon">🌙 Iftar dans</span>
+            </div>
+
+            <div class="timer">
+                <div class="unit">
+                <div class="value yellow" id = "heures">00</div>
+                <div class="label">Heures</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="unit">
+                <div class="value green" id = "minutes">00</div>
+                <div class="label">Minutes</div>
+                </div>
+                <div class="separator">:</div>
+                <div class="unit">
+                <div class="value gray" id = "secondes">00</div>
+                <div class="label">Secondes</div>
+                </div>
+            </div>
+
+            <p class="footer-text">Préparez-vous pour le mois béni ✨</p>
+            </section>
+        </section>
+        
+    </main>
+    
+    <hr>    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../script.js"></script>
+    <footer>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <p>Qu'Allah accepte notre jeûne et nos adorations</p>
+        <p>Fait avec ❤️ pour la Oumma</p>
+        <p>© 2026 Ramadan hub. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

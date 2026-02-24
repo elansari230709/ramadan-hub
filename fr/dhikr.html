@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan hub</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="home-bg">
+  <div id = "menu_parametres">
+      <div id = "parametres">
+        <span>Paramètres</span>
+        <button id="button_fermer" onclick="parametresFermer()">X</button> 
+        <hr>
+        Langue <br>
+        <button onclick="location.href='../en/dhikr.html'">EN English</button>
+        <button onclick="location.href='../ar/dhikr.html'">AR العربية</button> <br>
+        Location <br>
+        <div id="map"></div>
+      </div>
+  </div>
+        
+    <header>    
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <div id = "bouttons_pages">
+            <button onclick="location.href= 'accueil.html'">Accueil</button>
+            <button onclick="location.href= 'prieres.html'">Prières</button>
+            <button onclick="location.href='khatma.html'">Khatma</button>
+            <button onclick="location.href='planning.html'">Planning</button>
+            <button onclick="location.href='dhikr.html'" class ="current" >Dhikr</button>
+            <button onclick="location.href='doua.html'">Dou'a</button>
+        </div>
+        <button id="parametresOuvrir" onclick="parametresOuvrir()">⚙️</button>
+
+    </header>
+
+    <hr>
+    <main>
+      <section class="page"> 
+        <div class="header-dhikr">
+            <div class="top-icon">✨ الذكر</div>
+            <h1>Compteur de Dhikr</h1>
+            <p class="subtitle">Rappelez-vous d'Allah</p>
+        </div>
+
+        <!-- Choix Dhikr -->
+        <div class="dhikr-selection">
+            <div class="dhikr-item active">
+                <div class="arabic">سُبْحَانَ ٱللَّٰهِ</div>
+                <div class="latin">SubhanAllah</div>
+            </div>
+
+            <div class="dhikr-item">
+                <div class="arabic">ٱلْحَمْدُ لِلَّٰهِ</div>
+                <div class="latin">Alhamdulillah</div>
+            </div>
+
+            <div class="dhikr-item">
+                <div class="arabic">ٱللَّٰهُ أَكْبَرُ</div>
+                <div class="latin">Allahu Akbar</div>
+            </div>
+
+            <div class="dhikr-item">
+                <div class="arabic">أَسْتَغْفِرُ ٱللَّٰهَ</div>
+                <div class="latin">Astaghfirullah</div>
+            </div>
+        </div>
+
+        <!-- Compteur -->
+        <div class="card">
+            <div class="dhikr-title">
+                <div class="arabic big">سُبْحَانَ ٱللَّٰهِ</div>
+                <div class="translation">Gloire à Allah</div>
+            </div>
+
+            <div class="circle-container">
+                <div class="circle-dhikr">
+                    <div class="count">0</div>
+                    <div class="goal">/ 33</div>
+                </div>
+            </div>
+
+            <p class="instruction">Appuyez sur le cercle pour compter</p>
+
+            <div class="reset">↺ Réinitialiser</div>
+        </div>
+
+        <!-- Objectif -->
+        <div class="card">
+            <div class="objective-title">🎯 Objectif</div>
+
+            <div class="objectives">
+                <div class="objective-item active">33</div>
+                <div class="objective-item">100</div>
+                <div class="objective-item">500</div>
+                <div class="objective-item">1000</div>
+            </div>
+        </div>
+      </section>
+    </main>
+    
+    <hr>    
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../script.js"></script>
+    <footer>
+        <img id="logo" src="../ressources/logo.png" alt="Ramadan hub">
+        <p>Qu'Allah accepte notre jeûne et nos adorations</p>
+        <p>Fait avec ❤️ pour la Oumma</p>
+        <p>© 2026 Ramadan hub. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>

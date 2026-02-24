@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Fond Dynamique - Ramadan Hub</title>
+  <style>
+    :root {
+      --sky-1: #020813;
+      --sky-2: #06142a;
+      --sky-3: #0b2246;
+      --gold-1: #ffe08a;
+      --gold-2: #ffbf47;
+      --lantern: #8a5b42;
+      --wire: #7f7692;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at 20% 15%, rgba(25, 76, 150, 0.42) 0%, transparent 45%),
+                  radial-gradient(circle at 75% 70%, rgba(27, 76, 150, 0.34) 0%, transparent 40%),
+                  linear-gradient(180deg, var(--sky-1), var(--sky-2) 55%, var(--sky-3));
+      color: #eef5ff;
+      position: relative;
+    }
+
+    .noise {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      background-image:
+        radial-gradient(circle at 20% 30%, #ffffff 1px, transparent 1px),
+        radial-gradient(circle at 70% 60%, #ffffff 1px, transparent 1px);
+      background-size: 120px 120px;
+      animation: drift 20s linear infinite;
+    }
+
+    .stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #fff6c7;
+      box-shadow: 0 0 8px #fff5b5;
+      opacity: 0.7;
+      animation: twinkle var(--t, 3s) ease-in-out infinite;
+      animation-delay: var(--d, 0s);
+    }
+
+    .lanterns {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .lantern-wrap {
+      position: absolute;
+      top: 0;
+      width: 12px;
+      height: 320px;
+      transform-origin: top center;
+      animation: sway var(--s, 4.5s) ease-in-out infinite;
+    }
+
+    .wire {
+      width: 2px;
+      height: 154px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #a394ae 0%, #726786 55%, #5c546d 100%);
+      opacity: 0.9;
+    }
+
+    .lantern-wrap::after {
+      content: "";
+      position: absolute;
+      top: 146px;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      margin-left: -7px;
+      border-radius: 50%;
+      border: 2px solid #6e5a6f;
+      background: radial-gradient(circle at 35% 35%, #9684a0, #5a4f66);
+      box-shadow: 0 0 0 2px rgba(10, 17, 48, 0.3);
+    }
+
+    .lantern {
+      width: 86px;
+      height: 168px;
+      margin-left: -37px;
+      margin-top: -3px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.38));
+    }
+
+    .lantern-wrap .lantern {
+      animation: glow 2.8s ease-in-out infinite;
+    }
+
+    .lantern-glow {
+      position: absolute;
+      width: 74%;
+      height: 58%;
+      top: 29%;
+      left: 13%;
+      border-radius: 18px;
+      background: radial-gradient(circle at 50% 45%, rgba(255, 244, 176, 0.98) 0%, rgba(255, 203, 103, 0.86) 52%, rgba(255, 161, 65, 0.38) 100%);
+      filter: blur(4px);
+      opacity: 0.92;
+    }
+
+    .lantern-svg {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+      fill: #7a5748;
+      filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
+    }
+
+    .hero {
+      position: absolute;
+      left: 50%;
+      bottom: 10%;
+      transform: translateX(-50%);
+      width: min(920px, 92vw);
+      text-align: center;
+      padding: 30px 24px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(4, 20, 57, 0.72), rgba(17, 50, 102, 0.58));
+      border: 1px solid rgba(255, 223, 150, 0.25);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: #ffd774;
+    }
+
+    .hero p {
+      font-size: clamp(15px, 2.1vw, 20px);
+      opacity: 0.95;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 16px;
+      background: rgba(255, 201, 87, 0.15);
+      border: 1px solid rgba(255, 210, 110, 0.45);
+      color: #ffe4a0;
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; transform: scale(0.85); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-1.2deg); }
+      50% { transform: rotate(1.2deg); }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(255, 191, 88, 0.45));
+      }
+      50% {
+        filter: drop-shadow(0 0 20px rgba(255, 210, 125, 0.72));
+      }
+    }
+
+    @keyframes drift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-20px); }
+    }
+
+    @media (max-width: 700px) {
+      .lantern-wrap {
+        transform: scale(0.8);
+        transform-origin: top center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute; opacity:0; pointer-events:none" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="fanous-shape" viewBox="0 0 396.586 396.586">
+        <g>
+          <path d="M281.603,179.637c0.828,0,1.5-0.671,1.5-1.5v-4.601h4.451c0.828,0,1.5-0.671,1.5-1.5v-9.699c0-0.829-0.672-1.5-1.5-1.5h-24.146c-3.842-27.97-40.149-45.072-56.818-51.509c0.26-0.794,0.404-1.637,0.404-2.515c0-3.405-2.109-6.332-5.133-7.646c1.078-0.939,1.76-2.294,1.76-3.806c0-1.994-1.182-3.722-2.906-4.57l-0.781-6.204c3.354-0.748,5.861-3.736,5.861-7.315v-0.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.5c0,3.579,2.508,6.567,5.861,7.315l-0.781,6.204c-1.725,0.849-2.906,2.576-2.906,4.57c0,1.512,0.682,2.866,1.758,3.806c-3.021,1.313-5.131,4.24-5.131,7.646c0,0.877,0.144,1.721,0.404,2.515c-16.67,6.437-52.977,23.539-56.818,51.509h-24.148c-0.828,0-1.5,0.671-1.5,1.5v9.699c0,0.829,0.672,1.5,1.5,1.5h4.451v4.601c0,0.829,0.672,1.5,1.5,1.5h3.271v162.282h-3.271c-0.828,0-1.5,0.671-1.5,1.5v4.598h-4.451c-0.828,0-1.5,0.671-1.5,1.5v9.702c0,0.829,0.672,1.5,1.5,1.5h32.018c17.57,23.99,57.244,35.867,57.244,35.867s39.674-11.877,57.244-35.867h32.016c0.828,0,1.5-0.671,1.5-1.5v-9.702c0-0.829-0.672-1.5-1.5-1.5h-4.451v-4.598c0-0.829-0.672-1.5-1.5-1.5h-3.27V179.637H281.603z M161.343,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z M221.644,331.651h-46.701V228.584c0-24.726,23.352-40.929,23.352-40.929s23.35,16.203,23.35,40.929V331.651z M262.04,331.651h-26.795V228.584c0-24.726,13.396-40.929,13.396-40.929s13.398,16.203,13.398,40.929V331.651z"/>
+          <path d="M198.294,39.054c4.143,0,7.5-3.358,7.5-7.5v-0.963c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.963C190.794,35.695,194.151,39.054,198.294,39.054z"/>
+          <path d="M198.294,15.962c4.143,0,7.5-3.357,7.5-7.5V7.5c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,12.604,194.151,15.962,198.294,15.962z"/>
+          <path d="M198.294,62.145c4.143,0,7.5-3.358,7.5-7.5v-0.962c0-4.142-3.357-7.5-7.5-7.5c-4.143,0-7.5,3.358-7.5,7.5v0.962C190.794,58.786,194.151,62.145,198.294,62.145z"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="noise"></div>
+  <div class="stars" id="stars"></div>
+  <div class="lanterns">
+    <div class="lantern-wrap" style="left: 10%; --s: 4.8s;">
+      <div class="wire"></div>
+      <div class="lantern">
+        <div class="lantern-glow"></div>
+        <svg class="lantern-svg" viewBox="0 0 396.586 396.586" aria-hidden="true"><use href="#fanous-shape"></use></svg>
+      </div>
+    </div>
+    <div class="lantern-wrap" style="left: 24%; --s: 5.3s;">
+      <div class="wire"></div>
+      <div class="lantern">
+        <div class="lantern-glow"></div>
+        <svg class="lantern-svg" viewBox="0 0 396.586 396.586" aria-hidden="true"><use href="#fanous-shape"></use></svg>
+      </div>
+    </div>
+    <div class="lantern-wrap" style="left: 43%; --s: 4.3s;">
+      <div class="wire"></div>
+      <div class="lantern">
+        <div class="lantern-glow"></div>
+        <svg class="lantern-svg" viewBox="0 0 396.586 396.586" aria-hidden="true"><use href="#fanous-shape"></use></svg>
+      </div>
+    </div>
+    <div class="lantern-wrap" style="left: 63%; --s: 5.8s;">
+      <div class="wire"></div>
+      <div class="lantern">
+        <div class="lantern-glow"></div>
+        <svg class="lantern-svg" viewBox="0 0 396.586 396.586" aria-hidden="true"><use href="#fanous-shape"></use></svg>
+      </div>
+    </div>
+    <div class="lantern-wrap" style="left: 81%; --s: 4.9s;">
+      <div class="wire"></div>
+      <div class="lantern">
+        <div class="lantern-glow"></div>
+        <svg class="lantern-svg" viewBox="0 0 396.586 396.586" aria-hidden="true"><use href="#fanous-shape"></use></svg>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <h1>Fond Dynamique <span>Ramadan</span></h1>
+    <p>Version test: style professionnel, chaleureux et jovial.</p>
+    <div class="badge">Valide ce rendu et je l'intègre partout</div>
+  </section>
+
+  <script>
+    const stars = document.getElementById("stars");
+    const totalStars = 90;
+    for (let i = 0; i < totalStars; i++) {
+      const s = document.createElement("span");
+      s.className = "star";
+      s.style.left = `${Math.random() * 100}%`;
+      s.style.top = `${Math.random() * 100}%`;
+      s.style.setProperty("--t", `${2 + Math.random() * 3}s`);
+      s.style.setProperty("--d", `${Math.random() * 3}s`);
+      s.style.opacity = `${0.35 + Math.random() * 0.65}`;
+      stars.appendChild(s);
+    }
+  </script>
+</body>
+</html>
